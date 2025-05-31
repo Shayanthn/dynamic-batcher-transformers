@@ -1,35 +1,36 @@
-🚀 DynamicBatcher: Ultra-Efficient Transformer Inference Accelerator
-Python
-PyTorch
-Transformers
-License
+# 🚀 DynamicBatcher: Ultra-Efficient Transformer Inference Accelerator
 
-<div align="center"> <img src="https://github.com/shayanthn/DynamicBatcher/blob/main/assets/dynamic-batching-visualization.gif?raw=true" alt="Dynamic Batching Visualization" width="600"/> </div>
-🔥 Revolutionizing Transformer Inference Performance
-DynamicBatcher is a cutting-edge batching utility that dramatically accelerates Hugging Face Transformers inference by intelligently grouping sequences by length, minimizing padding overhead. Experience 2-5x faster inference with variable-length inputs while maintaining full accuracy.
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-1.10%2B-orange)
+![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellowgreen)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-✨ Key Features
-⚡ 50-80% reduction in padding computations
+## 🔥 Revolutionizing Transformer Inference Performance
 
-📈 Linear scalability with batch size and sequence length
+**DynamicBatcher** is a cutting-edge batching utility that dramatically accelerates Hugging Face Transformers inference by intelligently grouping sequences by length, minimizing padding overhead. Experience **2-5x faster inference** with variable-length inputs while maintaining full accuracy.
 
-🔄 Seamless integration with existing Hugging Face pipelines
+## ✨ Key Features
 
-🧠 Smart length-aware sorting for optimal GPU utilization
+- ⚡ **50-80% reduction in padding computations**
+- 📈 **Linear scalability** with batch size and sequence length
+- 🔄 **Seamless integration** with existing Hugging Face pipelines
+- 🧠 **Smart length-aware sorting** for optimal GPU utilization
+- 🏎️ **Near-zero overhead** batching process
 
-🏎️ Near-zero overhead batching process
+## 🛠 Installation
 
-🛠 Installation
-bash
+```bash
 pip install dynamic-batcher
+```
 Or build from source:
-
-bash
+```bash
 git clone https://github.com/shayanthn/DynamicBatcher.git
 cd DynamicBatcher
 pip install -e .
-🚀 Quick Start
-python
+```
+🚀 Quick Start :
+
+```bash
 from dynamic_batcher import DynamicBatcher
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
@@ -49,31 +50,34 @@ for batch in batches:
     inputs, original_indices = batch
     outputs = model(**inputs)
     # Process outputs...
-📊 Performance Benchmarks
-Method	Batch Size	Avg Inference Time	Speedup
-Naive Batching	32	4.72s	1x
-DynamicBatcher	32	1.89s	2.5x
-Naive Batching	64	8.91s	1x
-DynamicBatcher	64	3.12s	2.85x
+```
+📊 Performance Benchmarks :
+Method	        Batch Size	 Avg Inference Time	    Speedup
+Naive Batching	    32	           4.72s	          1x
+DynamicBatcher	    32	           1.89s	         2.5x
+Naive Batching	    64	           8.91s	          1x
+DynamicBatcher	    64	    
 *Benchmarks performed on NVIDIA V100 with 5000 variable-length sequences (5-100 words)*
-
 🌟 Advanced Features
 Custom Collate Functions
-python
+```bash
 def custom_collate(batch):
     # Your custom processing
     return processed_batch
 
 batcher = DynamicBatcher(tokenizer, collate_fn=custom_collate)
+```
 Mixed Precision Support
-python
+```bash
 batcher = DynamicBatcher(tokenizer, fp16=True)  # Enable AMP
+```
 Progress Tracking
-python
+```bash
 batches = batcher.create_batches(texts, progress_bar=True)
+```
 🧩 Integration Guide
 With PyTorch DataLoader
-python
+```bash
 from torch.utils.data import DataLoader
 
 class TextDataset:
@@ -92,8 +96,9 @@ dataloader = DataLoader(
     batch_sampler=DynamicBatchSampler(dataset, tokenizer, batch_size=32),
     collate_fn=batcher.dynamic_collate
 )
+```
 With FastAPI Web Service
-python
+```bash
 from fastapi import FastAPI
 app = FastAPI()
 batcher = DynamicBatcher(tokenizer)
@@ -106,9 +111,10 @@ async def predict(texts: List[str]):
         outputs = model(**batch[0])
         results.extend(process_outputs(outputs))
     return {"predictions": results}
+```
 📚 Documentation
 DynamicBatcher Class
-python
+```bash
 DynamicBatcher(
     tokenizer: AutoTokenizer,
     max_sequence_length: int = 512,
@@ -116,32 +122,19 @@ DynamicBatcher(
     progress_bar: bool = False,
     sorting_strategy: str = 'ascending'  # or 'descending'
 )
+```
 Methods
 create_batches(texts: List[str], batch_size: int) -> List[Tuple[Dict, List[int]]]
-
 dynamic_collate(batch: List[str]) -> Tuple[Dict, List[int]]
-
 🎯 Use Cases
-🔍 Document Processing Pipelines
+    🔍 Document Processing Pipelines
+    💬 Real-time Chat Applications
+    📰 News Article Classification
+    🗣 Speech-to-Text Post Processing
+    🌍 Multilingual Translation Services
+## 📬 Contact
+**Shayan Taherkhani**  
+📧 [shayanthn78@gmail.com](mailto:shayanthn78@gmail.com)  
+💼 [LinkedIn](https://linkedin.com/in/shayantaherkhani)  
+🐙 [GitHub](https://github.com/shayanthn)
 
-💬 Real-time Chat Applications
-
-📰 News Article Classification
-
-🗣 Speech-to-Text Post Processing
-
-🌍 Multilingual Translation Services
-
-🤝 Contributing
-We welcome contributions! Please see our Contribution Guidelines for details.
-
-📜 License
-MIT License - See LICENSE for full text.
-
-📬 Contact
-Shayan Taherkhani
-📧 shayanthn78@gmail.com
-💼 LinkedIn
-🐙 GitHub
-
-<div align="center"> <h3>⚡ Powered by Cutting-Edge AI Research ⚡</h3> <p>Optimizing the future of transformer inference, one batch at a time</p> </div>
