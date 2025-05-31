@@ -1,36 +1,7 @@
-🚀 DynamicBatcher: Supercharge Your Transformer Inference with Intelligent Batching
-
-
-
-
-Are you tired of slow Transformer inference due to excessive padding? When processing variable-length text sequences with Hugging Face models, standard batching often pads all sequences to a fixed max_length or the longest sequence in the entire dataset. This leads to wasted computation on padded tokens and inefficient GPU utilization.
-
-DynamicBatcher is your solution! This intelligent batching utility minimizes padding overhead by grouping sequences of similar lengths together. The result? Significantly faster inference times and more efficient resource usage, especially critical for large-scale NLP applications.
-
-✨ Key Features
-Intelligent Length-Based Sorting: Automatically sorts input texts by their tokenized length.
-Dynamic Padding: Batches are created such that sequences within each batch have similar lengths, minimizing padding only to the longest sequence within that specific batch.
-Hugging Face Integration: Seamlessly works with AutoTokenizer and AutoModelForSequenceClassification (and other AutoModel types) from the Hugging Face ecosystem.
-Performance Boost: Achieves substantial speedups for variable-length inputs compared to naive batching.
-Easy to Use: A straightforward class that integrates effortlessly into your existing inference pipelines.
-🛠️ Installation
-Getting started is simple!
-
-Clone the repository:
-Bash
-
-git clone https://github.com/shayanthn/dynamic-batcher-transformers.git
+🚀 DynamicBatcher: Supercharge Your Transformer Inference with Intelligent BatchingAre you processing variable-length text sequences with Hugging Face Transformers? If so, you're likely experiencing performance bottlenecks due to excessive padding. Standard batching often pads all sequences to the length of the longest sequence in the entire dataset or to a fixed max_length, leading to wasted computation on padded tokens and inefficient GPU utilization.DynamicBatcher is here to solve that. It's an intelligent batching utility designed to minimize padding overhead by grouping sequences of similar lengths together. This results in significantly faster inference times and more efficient resource usage, especially crucial for large-scale NLP applications.✨ Key FeaturesIntelligent Length-Based Sorting: Automatically sorts input texts by their tokenized length for optimal grouping.Dynamic Padding: Batches are created such that sequences within each batch have similar lengths, minimizing padding only to the longest sequence within that specific batch.Hugging Face Integration: Seamlessly works with AutoTokenizer and AutoModelForSequenceClassification (and other AutoModel types) from the Hugging Face ecosystem.Performance Boost: Achieves substantial speedups for variable-length inputs compared to naive batching.Easy to Use: A straightforward class that integrates effortlessly into your existing inference pipelines.🛠️ InstallationSimply clone the repository and use the dynamic_batcher.py file:git clone https://github.com/shayanthn/dynamic-batcher-transformers.git
 cd dynamic-batcher-transformers
-Install necessary libraries:
-Bash
-
-pip install torch transformers
-🚀 Quick Start & Usage
-Integrating DynamicBatcher into your inference workflow is straightforward.
-
-Python
-
-import torch
+Make sure you have the necessary libraries installed:pip install torch transformers
+🚀 Quick Start & UsageUsing DynamicBatcher is straightforward. Here's how you can integrate it into your inference workflow:import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from dynamic_batcher import DynamicBatcher # Assuming dynamic_batcher.py is in your path
 
@@ -81,20 +52,9 @@ with torch.no_grad():
 
 print("\nInference complete! Predictions stored in original order.")
 # print(all_predictions) # Uncomment to see predictions
-📊 Performance Benchmark
-To truly illustrate the power of DynamicBatcher, let's compare it against a standard naive batching approach on 5000 synthetic variable-length texts.
-
-Benchmarking Setup:
-
-Model: distilbert-base-uncased
-Number of Texts: 5000
-Text Lengths: Randomly varied from 5 to 100 words.
-Batch Size: 32 (for both methods)
-Device: CUDA (GPU) if available, otherwise CPU.
-<!-- end list -->
-
---- DynamicBatcher for Efficient Transformer Inference ---
+📊 Performance BenchmarkTo illustrate the significant speedup, we compare DynamicBatcher against a standard naive batching approach on 5000 synthetic variable-length texts.Benchmarking Setup:Model: distilbert-base-uncasedNumber of Texts: 5000Text Lengths: Randomly varied from 5 to 100 words.Batch Size: 32 (for both methods)Device: CUDA (GPU) if available, otherwise CPU.--- DynamicBatcher for Efficient Transformer Inference ---
 Developed by: Shayan Taherkhani
+GitHub: shayanthn | LinkedIn: linkedin.com/in/shayantaherkhani
 
 Using device: cuda # or cpu
 
@@ -107,7 +67,7 @@ Standard Batching Inference Time: X.XXXX seconds # e.g., 1.8543 seconds
 
 --- Benchmarking: Dynamic Padding (Shayan's DynamicBatcher) ---
 Created 157 dynamic batches.
-Dynamic Batching Creation Time: Y.YYYY seconds # e.g., 0.1234 seconds (batching overhead)
+Dynamic Batching Creation Time: Y.YYYY seconds # e.1234 seconds (batching overhead)
 Dynamic Batching Inference Time: Z.ZZZZ seconds # e.g., 0.7890 seconds
 
 --- Performance Comparison ---
@@ -115,31 +75,4 @@ Standard Batching Total Inference Time: 1.8543 seconds
 Dynamic Batching Total Inference Time: 0.7890 seconds
 
 🥳 DynamicBatcher is 2.35x faster for inference!
-Results: As you can see, DynamicBatcher consistently provides a significant speedup by drastically reducing the amount of wasted computation on padding tokens. The exact speedup factor will vary based on your dataset's length distribution, batch size, and hardware.
-
-🤝 Contributing
-Contributions are highly welcome! If you have suggestions for improvements, exciting new features, or bug fixes, please feel free to:
-
-Open an issue on this repository.
-Submit a pull request with your changes.
-Let's make Transformer inference even faster together!
-
-📧 Connect with Shayan Taherkhani
-Have questions or just want to connect? Reach out!
-
-&lt;p align="center">
-&lt;a href="mailto:shayanthn78@gmail.com">
-&lt;img src="[suspicious link removed]" alt="Email" />
-&lt;/a>
-&amp;nbsp;&amp;nbsp;&amp;nbsp;
-&lt;a href="[suspicious link removed]" target="_blank">
-&lt;img src="[suspicious link removed]" alt="GitHub" />
-&lt;/a>
-&amp;nbsp;&amp;nbsp;&amp;nbsp;
-&lt;a href="[suspicious link removed]" target="_blank">
-&lt;img src="[suspicious link removed]" alt="LinkedIn" />
-&lt;/a>
-&lt;/p>
-&lt;br>
-
------
+Results: As shown, DynamicBatcher consistently provides a noticeable speedup by drastically reducing the amount of wasted computation on padding tokens. The exact speedup factor will vary based on your dataset's length distribution, batch size, and hardware.🤝 ContributingContributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please feel free to open an issue or submit a pull request.📧 ContactConnect with Shayan Taherkhani:
