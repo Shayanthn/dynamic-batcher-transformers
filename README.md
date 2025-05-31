@@ -123,9 +123,6 @@ DynamicBatcher(
     sorting_strategy: str = 'ascending'  # or 'descending'
 )
 ```
-Methods
-create_batches(texts: List[str], batch_size: int) -> List[Tuple[Dict, List[int]]]
-dynamic_collate(batch: List[str]) -> Tuple[Dict, List[int]]
 🎯 Use Cases
     🔍 Document Processing Pipelines
     💬 Real-time Chat Applications
