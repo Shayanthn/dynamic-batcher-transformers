@@ -123,7 +123,8 @@ DynamicBatcher(
     sorting_strategy: str = 'ascending'  # or 'descending'
 )
 ```
-🎯 Use Cases
+🎯 Use Cases:
+
     🔍 Document Processing Pipelines
     💬 Real-time Chat Applications
     📰 News Article Classification
